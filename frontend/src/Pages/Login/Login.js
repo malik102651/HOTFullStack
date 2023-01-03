@@ -17,6 +17,9 @@ function Login() {
   const navigate = useNavigate()
 
  
+  // if(userInfo){
+  //   navigate('/')
+  // }
 
   const submitHandler=async(e)=>{
     e.preventDefault();
@@ -24,7 +27,7 @@ function Login() {
     // if(userLogin!=undefined){
     //   navigate('/')
     // }
-    localStorage.setItem('password',password)
+    //localStorage.setItem('password',password)
 
   }
 
@@ -34,7 +37,7 @@ function Login() {
     <div className='w-full h-screen bg-[#F5F5F5] flex justify-center items-center'>
 
       <div className='grid grid-cols-2 m-4 border rounded-lg max-w-4xl'>
-        <div className='bg-[#95959E] rounded-l-lg w-full'>
+        <div className='bg-[#95959E] rounded-l-lg w-full flex justify-center items-center'>
           <img src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp' alt='image' />
         </div>
         <div className='w-full p-4 bg-white  rounded-r-lg sm:p-6 md:p-8'>
@@ -62,7 +65,7 @@ function Login() {
             </div>
             <button type="submit" className="w-full text-white bg-[#252121]     font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Login to your account</button>
             <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-              Not registered? <Link className="text-[#393f81] hover:underline">Create account</Link>
+              Not registered? <Link to='/register' className="text-[#393f81] hover:underline">Create account</Link>
             </div>
           </form>
         </div>

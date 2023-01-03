@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import { logout } from '../../actions/userActions'
 import profile from '../../Images/profile.jpg'
 
@@ -12,7 +12,9 @@ function Navbar() {
     const logoutHandler = () => {
        dispatch(logout)
        console.log("logut") 
+       //window.location.reload();
        navigate('/login')
+       
     }
     return (
         <div className=' border bg-gray-50 h-[9%]'>
@@ -29,7 +31,7 @@ function Navbar() {
                                 <img className="w-8 h-8 rounded-full" src={profile} alt="user photo" />
                             </button>
 
-                            <div className={!Menu ? "absolute origin-top-right top-10 right-0  text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" : "hidden"}>
+                            <div className={!Menu ? "absolute origin-top-right top-10 right-0 z-30 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" : "hidden"}>
                                 <div className="px-4 py-3">
                                     <span className="block text-sm text-gray-900 dark:text-white">Malik Naseer</span>
                                     <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">malik@gmail.com</span>

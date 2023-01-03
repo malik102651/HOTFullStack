@@ -1,2 +1,2 @@
-export const SCHEDULE_CHECK = "SCHEDULE_CHECK"
+export const SCHEDULE = "SCHEDULE"
 export const SCHEDULE_ERROR = "SCHEDULE_ERROR"

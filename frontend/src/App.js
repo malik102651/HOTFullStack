@@ -8,6 +8,7 @@ import Loading from './Components/Loading/Loading';
 import { PublicRoute } from './Routing/PublicRouting';
 import { useSelector } from 'react-redux';
 import { HomeRoute } from './Routing/PrivateRoutes';
+import Register from './Pages/Register/Register';
 
 
 function App() {
@@ -16,15 +17,18 @@ function App() {
     authenticated: false,
     loading: true,
   })
-  const passowrd = localStorage.getItem('password')
+  const userToken = localStorage.getItem('UserToken')
+  console.log(userToken)
   const checkUser = () => {
-    if (passowrd) {
+    if (userToken) {
+      //console.log("signin")
       setAuthState({
         ...authentication,
         authenticated: true,
         loading: false,
       })
     } else {
+      //console.log("logout")
       setAuthState({
         ...authentication,
         authenticated: false,
@@ -33,21 +37,31 @@ function App() {
     }
   }
   useEffect(() => {
-    checkUser()
-  }, [passowrd])
+    if (userToken) {
+      checkUser()
+    } else {
+      setAuthState({
+        ...authentication,
+        authenticated: false,
+        loading: false,
+      })
+    }
+
+  }, [userToken])
   if (authentication.loading) {
     return (
       <Loading />
     )
   }
-  console.log(authentication.authenticated)
+  
   return (
     <div >
       <Router>
         <Routes>
           <Route path='/' element={<HomeRoute auth={authentication.authenticated}><Home /></HomeRoute>} />
           <Route path='/login' element={<PublicRoute auth={authentication.authenticated}><Login /></PublicRoute>} />
-          <Route path='/schedule' element={<Schedule />} />
+          <Route path='/register' element={<PublicRoute auth={authentication.authenticated}><Register /></PublicRoute>} />
+          <Route path='/schedule' element={<HomeRoute auth={authentication.authenticated}><Schedule /></HomeRoute>} />
         </Routes>
       </Router>
     </div>

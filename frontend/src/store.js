@@ -1,23 +1,27 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { userLoginReducer } from './reducers/userReducers';
+import { userLoginReducer, userRegisteredReducer } from './reducers/userReducers';
 import { ScheduleReducer } from './reducers/AppReducers';
 
-const reducer=combineReducers({
+const reducer = combineReducers({
     //this will contain our reducers
+    userRegister: userRegisteredReducer,
     userLogin: userLoginReducer,
     schedule_data: ScheduleReducer,
 
 });
 
-const initialState={
+//const userInfoFromStorage = localStorage.getItem("UserToken") ? localStorage.getItem("UserToken") : null;
 
+
+const initialState = {
+     //userToken: userInfoFromStorage
 };
 
-const middleware=[thunk];
+const middleware = [thunk];
 
-const store=createStore(
+const store = createStore(
     reducer,
     initialState,
     composeWithDevTools(applyMiddleware(...middleware))

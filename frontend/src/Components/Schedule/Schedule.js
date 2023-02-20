@@ -5,51 +5,31 @@ import { data as Config, data } from '../Config/Config'
 
 function Schedule() {
 
-  const [Schedule,setSchedule]=useState([])
+  const [Schedule, setSchedule] = useState([])
   const dispatch = useDispatch()
 
   // const [ScheduleTime, setScheduleTime] = useState([])
   // const [ScheduleDay, setScheduleDay] = useState([])
   // const [items, setItems] = useState([])
-  
 
-  // const storeValues = () => {
-  //   let checkboxValues = []
-
-  //   data.days.map((item) => {
-  //     //console.log(item)
-  //     checkboxValues.push({ day: item.day, checked: false })
-  //   })
-  //   setItems(checkboxValues)
-  // }
-  // useEffect(() => {
-  //   storeValues()
-  // }, [])
-  // console.log(items)
-
-  const chnageHandler = async(e, day,hour) => {
-    console.log(day,hour)
-    let arr=[...Schedule];
-    await arr.push({day: day,hour: hour})
-    setSchedule(arr)
-    //setSchedule([...Schedule,{day: day,hour: hour}])
-
-    console.log(Schedule)
-
-   dispatch(schedule(Schedule))
-    
-    // console.log(e.target.checked, index)
-    // setScheduleTime([...ScheduleTime,])
-    // if (e.target.checked) {
-    //   items[index].checked = e.target.checked
-    //   setItems([...items])
-    // } else {
-    //   items[index].checked = e.target.checked
-    //   setItems([...items])
-    // }
+  const chnageHandler = async (e, day, hour) => {
+   
+    setSchedule([...Schedule, { day: day, hour: hour }])
 
   }
   console.log(Schedule)
+  
+
+  const submitSchedule = () =>{
+    if (Schedule.length > 0) {
+      console.log(Schedule)
+      dispatch(schedule(Schedule))
+    }else{
+      console.log("please check the checkboxes")
+    }
+  }
+
+ 
 
   return (
 
@@ -61,7 +41,7 @@ function Schedule() {
             <th scope="col" className="py-3 px-6">
               Hours/Days
             </th>
-            {data.days.map((item,index) => {
+            {data.days.map((item, index) => {
               return (
                 <th key={index} scope="col" className="py-3 px-6">
                   {item.day}
@@ -71,7 +51,7 @@ function Schedule() {
           </tr>
         </thead>
         <tbody>
-          {data.time.map((item,sub_index) => {
+          {data.time.map((item, sub_index) => {
             return (
               <>
                 <tr key={sub_index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -84,7 +64,7 @@ function Schedule() {
 
                       <td key={sub_child_index} className="py-4 px-6">
                         <label className="inline-flex items-center">
-                          <input type="checkbox"  onChange={(e) => chnageHandler(e, sub_item.day,item.hour)} className="form-checkbox text-gray-600" />
+                          <input type="checkbox" onChange={(e) => chnageHandler(e, sub_item.day, item.hour)} className="form-checkbox text-gray-600" />
                         </label>
                       </td>
                     )
@@ -95,6 +75,9 @@ function Schedule() {
           })}
         </tbody>
       </table>
+      <div className='flex justify-center mt-5'>
+        <button type="button" onClick={()=>{submitSchedule()}} className=" text-white bg-[#252121] font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Submit</button>
+      </div>
     </div>
 
 

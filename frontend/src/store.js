@@ -6,7 +6,7 @@ import { ScheduleReducer } from './reducers/AppReducers';
 
 const reducer = combineReducers({
     //this will contain our reducers
-    userRegister: userRegisteredReducer,
+    userRegister: userRegisteredReducer, 
     userLogin: userLoginReducer,
     schedule_data: ScheduleReducer,
 

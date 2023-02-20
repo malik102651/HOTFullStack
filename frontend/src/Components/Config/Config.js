@@ -38,5 +38,32 @@ days: [
     {
         "day": "Sun"
     },
+],
+books:[
+    {
+        "name": "PF",
+        "code": "PF12",
+    },
+    {
+        "name": "IT",
+        "code": "IT13",
+    },
+    {
+        "name": "OOP",
+        "code": "OOP14",
+    },
+    {
+        "name": "MVC",
+        "code": "MVC15",
+    },
+    {
+        "name": "AI",
+        "code": "AI16",
+    },
+    {
+        "name": "DS",
+        "code": "DS17",
+    },
+
 ]
 }

@@ -35,7 +35,7 @@ function Home() {
                             <li>
                                 <div onClick={() => setScreenName("RegisterCourses")} className="flex cursor-pointer items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                     <iconify-icon width='20' height='20' icon="healthicons:register-book-outline"></iconify-icon>
-                                    <span className="flex-1 ml-3 whitespace-nowrap">Register Courses</span>
+                                    <span className="flex-1 ml-3 whitespace-nowrap">My Courses</span>
                                 </div>
                             </li>
                             <li>

@@ -1,0 +1,2 @@
+export const SCHEDULE = "SCHEDULE"
+export const SCHEDULE_ERROR = "SCHEDULE_ERROR"
